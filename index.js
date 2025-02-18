@@ -1,4 +1,6 @@
 require("dotenv").config();
+const express = require('express');
+const app = express();
 const TelegramBot = require("node-telegram-bot-api");
 //const { OpenAI } = require("openai"); // Import OpenAI SDK
 const { GoogleGenerativeAI } = require("@google/generative-ai");
@@ -282,7 +284,15 @@ bot.on("message", async (msg) => {
 //     }
 // });
 
-console.log("Bot is running...");
+app.get('/', (req, res) => {
+  res.send('Bot is running!');
+});
+
+// Add this at the bottom of your file
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
 
 
 

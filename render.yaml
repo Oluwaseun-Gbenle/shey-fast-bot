@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: telegram-bot
+    runtime: node
+    plan: free
+    repo:https://github.com/Oluwaseun-Gbenle/shey-fast-bot
+    buildCommand: npm install
+    startCommand: node index.js
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: GOOGLE_GEMINI_API_KEY
+        sync: false
+      - key: PORT
+        value: 3000
